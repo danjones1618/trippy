@@ -1,4 +1,3 @@
-import Image from 'next/image'
 import {
   Box,
   Button,
@@ -14,7 +13,7 @@ import { AiOutlineArrowRight } from 'react-icons/ai'
 
 interface GalleryCardProps {
   name: string
-  href: string
+  uid: string
   size: number
   imgHref: string
 }
