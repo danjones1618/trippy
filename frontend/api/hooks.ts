@@ -1,7 +1,8 @@
 import { useQuery } from '@tanstack/react-query'
 import {
   getGalleries,
-  getGalleryPhotos
+  getGalleryPhotos,
+  uploadFiles,
 } from './fetchers'
 
 export function useGetGalleries() {

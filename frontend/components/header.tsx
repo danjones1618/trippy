@@ -4,6 +4,7 @@ import {
   Heading,
   HStack,
   Link,
+  Spacer,
 } from "@chakra-ui/react"
 
 interface HeaderProps {
@@ -19,6 +20,12 @@ export default function Header(props: HeaderProps) {
         </Link>
       </NextLink>
       <Heading>{props.title}</Heading>
+      <Spacer />
+      <NextLink href="/upload">
+        <Link>
+          Upload photos/videos
+        </Link>
+      </NextLink>
     </HStack>
   );
 }

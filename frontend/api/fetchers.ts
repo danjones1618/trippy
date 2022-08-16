@@ -28,3 +28,15 @@ export async function getGalleryPhotos(galleryUUID: string): Promise<Photo[]> {
       : Promise.reject(res)
     )
 }
+
+export async function uploadFiles(galleryUUID: string, files: File[]) {
+  const formData = new FormData();
+  for (const f of files) {
+    formData.append("files", f);
+  }
+
+  return fetch(`${API_BASE}/gallery/${galleryUUID}`, {
+    method: 'POST',
+    body: formData,
+  });
+}
