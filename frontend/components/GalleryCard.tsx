@@ -1,3 +1,4 @@
+import NextLink from 'next/link'
 import {
   Button,
   Flex,
@@ -42,13 +43,17 @@ export default function GalleryCard(props: Gallery) {
           <Icon as={GrGallery} />
           <Text>{props.numItems}</Text>
         </HStack>
-        <Button
-          colorScheme="brand.primary"
-          variant="outline"
-          rightIcon={<AiOutlineArrowRight />}
-        >
-          View
-        </Button>
+
+        <NextLink href={`/gallery/${props.uuid}`} passHref>
+          <Button
+            as="a"
+            colorScheme="brand.primary"
+            variant="outline"
+            rightIcon={<AiOutlineArrowRight />}
+          >
+            View
+          </Button>
+        </NextLink>
       </Flex>
     </Flex>
   );

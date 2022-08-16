@@ -4,3 +4,8 @@ export interface Gallery {
   numItems: number
   coverImage: string
 }
+
+export interface Photo {
+  uuid: string
+  timestamp: string
+}
