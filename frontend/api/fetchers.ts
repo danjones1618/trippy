@@ -1,6 +1,6 @@
 import { Gallery, Photo } from './types'
 
-const API_BASE = "http://localhost:8000"
+const API_BASE = process.env.NODE_ENV === "development" ? "http://localhost:8000" : "/api"
 
 export async function getGalleries(): Promise<Gallery[]> {
   return fetch(`${API_BASE}/galleries`)
