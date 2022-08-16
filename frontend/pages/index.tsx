@@ -1,15 +1,15 @@
-import { Flex } from "@chakra-ui/react"
-import GalleryCard from "../components/GalleryCard"
+import { Flex } from '@chakra-ui/react'
+import { useGetGalleries } from '../api/hooks'
+import GalleryCard from '../components/GalleryCard'
 
 function Home() {
+  const { data: galleries, isLoading, isError } = useGetGalleries()
+
   return (
     <Flex gap={4} wrap="wrap" justifyContent="center">
-      <GalleryCard name="Kandersteg 2022" href="/" size={ 20 } imgHref="/land.jpg" />
-      <GalleryCard name="Holland 2023" href="/" size={ 25 } imgHref="/land.jpg" />
-      <GalleryCard name="Holland 2023" href="/" size={ 39 } imgHref="/land.jpg" />
-      <GalleryCard name="Holland 2023" href="/" size={ 20 } imgHref="/land.jpg" />
-      <GalleryCard name="Holland 2023" href="/" size={ 20 } imgHref="/land.jpg" />
-      <GalleryCard name="Holland 2023" href="/" size={ 20 } imgHref="/land.jpg" />
+      { !isLoading && !isError && galleries!.map((g) =>
+        <GalleryCard key={g.uuid} {...g} />
+      )}
     </Flex>
   )
 }

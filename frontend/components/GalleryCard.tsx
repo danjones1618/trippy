@@ -1,33 +1,28 @@
 import {
-  Box,
   Button,
   Flex,
   Heading,
   Icon,
   Img,
   HStack,
+  Spacer,
   Text,
 } from '@chakra-ui/react'
 import { GrGallery } from 'react-icons/gr'
 import { AiOutlineArrowRight } from 'react-icons/ai'
+import { Gallery } from '../api/types'
 
-interface GalleryCardProps {
-  name: string
-  uid: string
-  size: number
-  imgHref: string
-}
-
-export default function GalleryCard(props: GalleryCardProps) {
+export default function GalleryCard(props: Gallery) {
   return (
-    <Box
+    <Flex
       p={5}
       borderWidth="1px"
       borderRadius="md"
-      maxW="2xs"
+      w="2xs"
+      direction="column"
     >
       <Img
-        src={props.imgHref}
+        src={`http://localhost:8000/gallery/${props.uuid}/${props.coverImage}`}
         alt={props.name}
         objectFit="cover"
         mt={-5}
@@ -37,14 +32,15 @@ export default function GalleryCard(props: GalleryCardProps) {
         sx={{
           width: "calc(100% + var(--chakra-space-5) * 2)",
           maxW: "calc(100% + var(--chakra-space-5) * 2)",
-          maxHeight: "100px",
+          maxHeight: "150px",
         }}
       />
       <Heading>{props.name}</Heading>
+      <Spacer />
       <Flex justifyContent="space-between" alignItems="end">
         <HStack spacing={1} alignItems="baseline">
           <Icon as={GrGallery} />
-          <Text>{props.size}</Text>
+          <Text>{props.numItems}</Text>
         </HStack>
         <Button
           colorScheme="brand.primary"
@@ -54,6 +50,6 @@ export default function GalleryCard(props: GalleryCardProps) {
           View
         </Button>
       </Flex>
-    </Box>
+    </Flex>
   );
 }

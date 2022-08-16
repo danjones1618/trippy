@@ -2,16 +2,42 @@
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
 
 <svg
-   width="1244.4904"
+   width="1244.49"
    height="699.61652"
-   viewBox="0 0 1244.4904 699.61652"
+   viewBox="0 0 1244.49 699.61652"
    version="1.1"
    id="svg5"
+   inkscape:version="1.2.1 (9c6d41e410, 2022-07-14)"
+   sodipodi:docname="trippy.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns="http://www.w3.org/2000/svg"
    xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#505050"
+     bordercolor="#ffffff"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="1"
+     inkscape:deskcolor="#505050"
+     inkscape:document-units="px"
+     showgrid="false"
+     inkscape:zoom="0.6180637"
+     inkscape:cx="542.01533"
+     inkscape:cy="322.78226"
+     inkscape:window-width="1515"
+     inkscape:window-height="1033"
+     inkscape:window-x="10"
+     inkscape:window-y="31"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="text236" />
   <defs
      id="defs2" />
   <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
      id="layer1"
      transform="translate(-337.75481,-190.19174)">
     <rect
@@ -28,14 +54,28 @@
        height="637.03735"
        x="448.16367"
        y="190.19174" />
-    <text
-       xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;font-size:512px;line-height:1.25;font-family:'Big Shoulders Stencil Text';-inkscape-font-specification:'Big Shoulders Stencil Text, Light';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;letter-spacing:0px;word-spacing:0px;fill:#293241;fill-opacity:1;stroke:none"
-       x="554.26996"
-       y="661.66443"
-       id="text236"><tspan
-         id="tspan396"
-         x="554.26996"
-         y="661.66443">Trippy</tspan></text>
+    <g
+       aria-label="Trippy"
+       id="text236"
+       style="font-weight:300;font-size:512px;line-height:1.25;font-family:'Big Shoulders Stencil Text';-inkscape-font-specification:'Big Shoulders Stencil Text, Light';letter-spacing:0px;word-spacing:0px;fill:#293241">
+      <path
+         d="m 558.36596,280.99243 v -28.928 h 151.552 v 28.928 z m 60.16,380.672 v -363.52 h 31.488 v 363.52 z"
+         id="path291" />
+      <path
+         d="m 784.66976,383.90443 v -25.088 q 10.24,-5.376 27.136,-5.376 4.096,0 8.192,0.256 4.352,0.256 9.472,1.024 v 25.088 h -17.408 q -16.896,0 -27.392,4.096 z m -58.112,277.76 v -307.2 h 32.512 v 307.2 z"
+         id="path293" />
+      <path
+         d="m 858.14212,288.92843 v -36.864 h 47.872 v 36.864 z m 9.216,372.736 v -307.2 h 31.488 v 307.2 z"
+         id="path295" />
+      <path
+         d="m 1015.07,637.08843 q 7.424,3.072 18.944,3.072 15.616,0 23.04,-7.424 7.68,-7.68 8.192,-24.832 1.024,-35.328 1.536,-61.44 0.512,-26.112 0.256,-47.872 0,-21.76 -0.512,-43.264 -0.512,-21.504 -1.28,-47.616 -0.512,-16.896 -7.424,-24.32 -6.656,-7.68 -22.528,-7.68 -11.776,0 -20.224,3.84 v -21.504 q 11.52,-7.168 29.696,-7.168 26.112,0 38.912,14.08 12.8,13.824 13.824,45.312 0.512,16.384 0.512,42.496 0.256,25.856 0.256,54.784 0,28.928 -0.256,55.296 0,26.112 -0.512,43.008 -1.024,31.488 -14.592,45.568 -13.312,13.824 -39.424,13.824 -17.664,0 -28.416,-7.424 z m -57.85599,126.976 v -409.6 h 32.256 v 409.6 z"
+         id="path297" />
+      <path
+         d="m 1209.8864,637.08843 q 7.424,3.072 18.944,3.072 15.616,0 23.04,-7.424 7.68,-7.68 8.192,-24.832 1.024,-35.328 1.536,-61.44 0.512,-26.112 0.256,-47.872 0,-21.76 -0.512,-43.264 -0.512,-21.504 -1.28,-47.616 -0.512,-16.896 -7.424,-24.32 -6.656,-7.68 -22.528,-7.68 -11.776,0 -20.224,3.84 v -21.504 q 11.52,-7.168 29.696,-7.168 26.112,0 38.912,14.08 12.8,13.824 13.824,45.312 0.512,16.384 0.512,42.496 0.256,25.856 0.256,54.784 0,28.928 -0.256,55.296 0,26.112 -0.512,43.008 -1.024,31.488 -14.592,45.568 -13.312,13.824 -39.424,13.824 -17.664,0 -28.416,-7.424 z m -57.856,126.976 v -409.6 h 32.256 v 409.6 z"
+         id="path299" />
+      <path
+         d="m 1375.7748,661.66443 -46.592,-307.2 h 33.28 l 19.712,150.272 16.64,131.84 h 33.536 l -3.84,25.088 z m 33.024,-49.92 13.568,-107.008 16.896,-150.272 h 33.28 l -36.608,257.28 z m -54.784,154.112 q -6.656,0 -16.384,-1.024 -9.472,-0.768 -16.896,-2.048 v -25.088 q 6.4,1.024 14.848,1.536 8.704,0.768 17.408,0.768 19.712,0 27.136,-6.656 7.424,-6.4 9.984,-24.32 l 3.584,-23.552 h 31.744 l -3.584,23.04 q -4.352,29.952 -19.2,43.52 -14.592,13.824 -48.64,13.824 z"
+         id="path301" />
+    </g>
   </g>
 </svg>

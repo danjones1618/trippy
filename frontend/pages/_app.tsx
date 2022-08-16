@@ -1,5 +1,8 @@
 import type { NextPage } from 'next'
 import type { AppProps } from 'next/app'
+import { useState } from 'react'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import { ChakraProvider, Container } from '@chakra-ui/react'
 import Head from 'next/head'
 import Header from '../components/header'
@@ -14,18 +17,23 @@ type TrippyAppProps = AppProps & {
 }
 
 function MyApp({ Component, pageProps }: TrippyAppProps) {
+  const [ queryClient ] = useState(() => new QueryClient());
+
   return (
-    <ChakraProvider theme={theme}>
-      <Head>
-        <title>Trippy</title>
-        <meta name="description" content="A self-hosted shared image gallary" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-      <Header title={Component.title || ""} />
-      <Container p={4} maxW="container.lg">
-        <Component {...pageProps} />
-      </Container>
-    </ChakraProvider>
+    <QueryClientProvider client={queryClient}>
+      <ChakraProvider theme={theme}>
+        <Head>
+          <title>Trippy</title>
+          <meta name="description" content="A self-hosted shared image gallary" />
+          <link rel="icon" href="/favicon.ico" />
+        </Head>
+        <Header title={Component.title || ""} />
+        <Container p={4} maxW="container.lg">
+          <Component {...pageProps} />
+        </Container>
+        <ReactQueryDevtools />
+      </ChakraProvider>
+    </QueryClientProvider>
   );
 }
 

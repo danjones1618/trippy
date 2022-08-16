@@ -2,29 +2,49 @@
 
 from datetime import datetime
 from fastapi import FastAPI, Form, File, UploadFile, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse
 from filelock import FileLock
 from typing import List, Dict
 from pathlib import Path
 from uuid import uuid4
 from .types import Gallery, Photo
-from .config import Settings
+from .config import Settings, custom_openapi
 import json
 import os
 
 app = FastAPI()
 
+app.openapi = custom_openapi(app)
+
 settings = Settings()
 
+origins = [ "http://localhost:3000" ]
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
-if not settings.storage_dir.exists():
-    settings.storage_dir.mkdir()
+
+@app.on_event("startup")
+async def startup_event():
+    if not settings.storage_dir.exists():
+        settings.storage_dir.mkdir()
 
 
 @app.get("/galleries", response_model=List[Gallery])
 def getGalleries() -> List[Gallery]:
     galleries_meta: List[Dict[str, str]] = []
-    with open(settings.storage_dir / "galleries.meta.json") as f:
+
+    galleries_meta_file = settings.storage_dir / "galleries.meta.json"
+
+    if not galleries_meta_file.exists():
+        return []
+
+    with open(galleries_meta_file) as f:
         galleries_meta = [json.loads(l) for l in f.readlines()]
 
     galleries = []
