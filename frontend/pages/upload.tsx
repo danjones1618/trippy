@@ -124,14 +124,24 @@ export default function Upload() {
             });
 
             uploadFiles(galleryUUID!, files)
-              .then(() => {
-                toast({
-                  title: "Files uploaded!",
-                  status: "success",
-                  duration: 5000,
-                  isClosable: true,
-                });
-                setFiles([]);
+              .then((res) => {
+                if (res.ok) {
+                  toast({
+                    title: "Files uploaded!",
+                    status: "success",
+                    duration: 5000,
+                    isClosable: true,
+                  });
+                  setFiles([]);
+                } else {
+                  toast({
+                    title: "Error uploading files",
+                    description: "Please try again in a moment",
+                    status: "error",
+                    duration: 5000,
+                    isClosable: true,
+                  });
+                }
               })
               .catch(() => {
                 toast({

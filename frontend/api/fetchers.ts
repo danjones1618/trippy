@@ -30,13 +30,21 @@ export async function getGalleryPhotos(galleryUUID: string): Promise<Photo[]> {
 }
 
 export async function uploadFiles(galleryUUID: string, files: File[]) {
-  const formData = new FormData();
-  for (const f of files) {
-    formData.append("files", f);
-  }
+  let uploads: Promise<Response>[] = []
 
-  return fetch(`${API_BASE}/gallery/${galleryUUID}`, {
-    method: 'POST',
-    body: formData,
-  });
+  for (let i = 0; i < files.length; i++) {
+    const formData = new FormData();
+    //for (const f of files) {
+    //  formData.append("files", f);
+    //}
+    formData.append("files", files[i]);
+
+    uploads.push(
+      fetch(`${API_BASE}/gallery/${galleryUUID}`, {
+        method: 'POST',
+        body: formData,
+      })
+    );
+  }
+  return Promise.all(uploads);
 }
