@@ -23,7 +23,7 @@ export default function GalleryCard(props: Gallery) {
       direction="column"
     >
       <Img
-        src={`http://localhost:8000/gallery/${props.uuid}/${props.coverImage}`}
+        src={`/api/gallery/${props.uuid}/${props.coverImage}`}
         alt={props.name}
         objectFit="cover"
         mt={-5}
