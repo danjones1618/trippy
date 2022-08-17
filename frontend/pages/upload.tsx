@@ -125,7 +125,7 @@ export default function Upload() {
 
             uploadFiles(galleryUUID!, files)
               .then((res) => {
-                if (res.ok) {
+                if (res.reduce((ans, r) => ans && r.ok, true)) {
                   toast({
                     title: "Files uploaded!",
                     status: "success",
