@@ -30,7 +30,7 @@ function Gallery() {
         { !isLoading && !isError && photos!.map((p) =>
           <Img
             key={p.uuid}
-            src={`http://localhost:8000/gallery/${galleryUUID}/${p.uuid}`}
+            src={`/api/gallery/${galleryUUID}/${p.uuid}`}
             objectFit="cover"
             borderRadius="md"
             w="sm"
