@@ -19,11 +19,11 @@ def custom_openapi(app: FastAPI):
         openapi_schema = get_openapi(
             title="Trippy API",
             version="0.1.0",
-            description="API for [Trippy](https://github.com/danjones1618/trippy)",
+            description="API for [Trippy](https://sr.ht/~danjones1618/trippy)",
             routes=app.routes
         )
         openapi_schema["info"]["x-logo"] = {
-            "url": "https://raw.githubusercontent.com/danjones1618/trippy/main/frontend/public/trippy.svg"
+            "url": "https://share.danjones.dev/trippy-logo.svg"
         }
 
         app.openapi_schema = openapi_schema
