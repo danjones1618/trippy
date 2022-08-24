@@ -8,10 +8,11 @@ from filelock import FileLock
 from typing import List, Dict
 from pathlib import Path
 from uuid import uuid4
-from .types import Gallery, Photo
+from .types import Gallery, Media
 from .config import Settings, custom_openapi
 import json
 import os
+import mimetypes
 
 app = FastAPI()
 
@@ -33,6 +34,9 @@ app.add_middleware(
 async def startup_event():
     if not settings.storage_dir.exists():
         settings.storage_dir.mkdir()
+
+    if not mimetypes.inited:
+        mimetypes.init()
 
 
 @app.get("/galleries", response_model=List[Gallery])
@@ -93,8 +97,8 @@ def addGallery(name: str = Form(), cover_image: UploadFile = File()):
     return Gallery(uuid=gallery_uuid, name=name, num_items=0, cover_image=cover_image.content_type)
 
 
-@app.get("/gallery/{gallery_uuid}", response_model=List[Photo])
-def getPhotos(gallery_uuid: str):
+@app.get("/gallery/{gallery_uuid}", response_model=List[Media])
+def listGallery(gallery_uuid: str):
     # TODO check if have permission
     directory = settings.storage_dir / gallery_uuid
 
@@ -102,11 +106,20 @@ def getPhotos(gallery_uuid: str):
         raise HTTPException(status_code=404)
 
     directory.lstat().st_atime
-    return [Photo(uuid=p.name, timestamp=datetime.fromtimestamp(p.lstat().st_atime)) for p in directory.iterdir()]
+    results: List[Media] = []
+    for p in directory.iterdir():
+        media = Media.fromPath(p)
+
+        if media == None:
+            continue
+
+        results.append(media)
+
+    return results
 
 
 @app.get("/gallery/{gallery_uuid}/{photo_uuid}", response_class=FileResponse)
-async def getPhoto(gallery_uuid: str, photo_uuid: str):
+async def getMedia(gallery_uuid: str, photo_uuid: str):
     # TODO check if have permission
     path = settings.storage_dir / gallery_uuid / photo_uuid
 
@@ -116,8 +129,8 @@ async def getPhoto(gallery_uuid: str, photo_uuid: str):
     return FileResponse(path)
 
 
-@app.post("/gallery/{gallery_uuid}")
-async def postPhotos(gallery_uuid: str, files: List[UploadFile] = File(description="Multiple files to upload")):
+@app.post("/gallery/{gallery_uuid}", response_model=List[Media])
+async def postMedia(gallery_uuid: str, files: List[UploadFile] = File(description="Multiple files to upload")):
     # TODO check if have perms
 
     folder = settings.storage_dir / gallery_uuid
@@ -125,9 +138,20 @@ async def postPhotos(gallery_uuid: str, files: List[UploadFile] = File(descripti
     if not folder.exists() or not folder.is_dir():
         raise HTTPException(status_code=400, detail="Invalid gallery")
 
+    uploadedMedia: List[Media] = []
+
     for file in files:
         name = str(uuid4()) + Path(file.filename).suffix
         with open(folder / name, "wb") as f:
             f.write(file.file.read())
-    return
+
+        media = Media.fromPath(folder / name)
+
+        if media == None:
+            # TODO properly handel this error
+            continue
+
+        uploadedMedia.append(media)
+
+    return uploadedMedia
 
